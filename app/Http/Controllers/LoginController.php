@@ -15,8 +15,8 @@ use Session;
 class LoginController extends Controller
 {
     protected $rules = [
-        'firstname' => 'required|regex:/^[a-z A-Z]+$/u',
-        'secondname' => 'required|regex:/^[a-z A-Z]+$/u',
+        'firstname' => 'required|regex:/^[a-z A-Z \-]+$/u',
+        'secondname' => 'required|regex:/^[a-z A-Z \-]+$/u',
         'email' => 'required|email',
         'password' => 'required|min:6|max:12',
         'confirm_password' => 'required|same:password',
@@ -27,8 +27,8 @@ class LoginController extends Controller
         'password' => 'required|min:6|max:12',
     ];
     protected $rules_Update = [
-        'firstname' => 'required|regex:/^[a-z A-Z]+$/u',
-        'secondname' => 'required|regex:/^[a-z A-Z]+$/u',
+        'firstname' => 'required|regex:/^[a-z A-Z \-]+$/u',
+        'secondname' => 'required|regex:/^[a-z A-Z \-]+$/u',
         'mobile' => 'numeric|required|digits:10',
     ];
 
@@ -37,7 +37,9 @@ class LoginController extends Controller
         if (!Session::get('user')) {
             return view('user_login');
         }
-        $addresses = Address::all();
+        $addresses = DB::table('user_addresses')
+            ->where('user_id', '=', Session::get('user_id'))
+            ->get();
         $user = User::findOrFail(Session::get('user_id'));
         // self::console_log('variable $ addresses = ' . $addresses);
         return view('user_account', [

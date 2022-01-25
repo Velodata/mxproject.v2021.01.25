@@ -34,9 +34,11 @@ Route::post('addNewUser', 'LoginController@addNewUser');
 Route::post('registerUser', 'LoginController@registerUser');
 Route::post('loginUser', 'LoginController@loginUser');
 Route::post('updateUser', 'LoginController@updateUser');
+Route::post('addNewAddress', 'AddressController@addNewAddress');
+Route::post('updateAddress', 'AddressController@updateAddress');
+Route::post('deleteAddress', 'AddressController@deleteAddress');
 
 Route::group(['middleware' => 'customAuth'], function () {
-    Route::post('addNewAddress', 'AddressController@addNewAddress');
     Route::view('/add', 'add');
     Route::post('addResto', 'RestoController@addResto');
 });

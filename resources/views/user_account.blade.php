@@ -180,7 +180,8 @@
                     </thead>
                     <tbody>
                         @foreach($addresses as $address)
-                        <tr class="item{{$address->id}} @if($address->is_published) warning @endif">
+                        {{-- <tr class="item{{$address->id}} @if($address->is_published) warning @endif"> --}}
+                        <tr class="address{{$address->id}} ">
                             {{-- <td>{{ $address->id }}</td> --}}
                             <td><strong>{{ $address->address1 }}</strong><br>{{ $address->suburb }}, {{
                                 $address->postcode }}</td>
@@ -201,22 +202,33 @@
                             </td>
                             <td>
                                 <button class="show-modal btn btn-success" data-id="{{$address->id}}"
-                                    data-title="{{$address->address1}}" data-title="{{$address->address2}}"
-                                    data-content="{{$address->suburb}}" data-content="{{$address->state}}"
-                                    data-content="{{$address->postcode}}" data-content="{{$address->postcode}}">
+                                    data-user_id="{{$address->user_id}}" data-address1="{{$address->address1}}"
+                                    data-address2="{{$address->address2}}" data-suburb="{{$address->suburb}}"
+                                    data-state="{{$address->state}}" data-postcode="{{$address->postcode}}"
+                                    data-country="{{$address->country}}">
                                     <span class="glyphicon glyphicon-eye-open"></span> Show</button>
                                 <button class="edit-modal btn btn-info" data-id="{{$address->id}}"
-                                    data-title="{{$address->address1}}" data-content="{{$address->suburb}}">
+                                    data-user_id="{{$address->user_id}}" data-address1="{{$address->address1}}"
+                                    data-address2="{{$address->address2}}" data-suburb="{{$address->suburb}}"
+                                    data-state="{{$address->state}}" data-postcode="{{$address->postcode}}"
+                                    data-country="{{$address->country}}">
                                     <span class="glyphicon glyphicon-edit"></span> Edit</button>
                                 <button class="delete-modal btn btn-danger" data-id="{{$address->id}}"
-                                    data-title="{{$address->address1}}" data-content="{{$address->suburb}}">
+                                    data-user_id="{{$address->user_id}}" data-address1="{{$address->address1}}"
+                                    data-address2="{{$address->address2}}" data-suburb="{{$address->suburb}}"
+                                    data-state="{{$address->state}}" data-postcode="{{$address->postcode}}"
+                                    data-country="{{$address->country}}">
                                     <span class="glyphicon glyphicon-trash"></span> Delete</button>
                             </td>
+                            <script>
+                            </script>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+
             </div><!-- /.panel-body -->
+            <p style="font-size: 10px; padding-left: 20px;">v2021.01.25 (v5)</p>
         </div><!-- /.panel panel-default -->
     </div><!-- /.col-md-8 -->
 </section>
@@ -255,13 +267,16 @@
 
 
 <!-- Modal form to add a new address -->
-<div id="addModal" class="modal fade" role="dialog">
+<div id="addModal" class="modal XXfade" role="dialog">
     <div class="modal-dialog" style="max-width: 500px;">
         <div class="modal-content rounded-5 shadow-5-strong">
             <div class="modal-header" style="display: block;">
                 {{-- <button type="button" class="close" data-dismiss="modal">×</button> --}}
                 <h2 class="modal-title"></h2>
-                <h5>All fields are mandatory except Address Line 2</h5>
+                <p>All fields are mandatory except Address Line 2.</p>
+                <p>If you live in New Zealand you don't have to fill in
+                    the State field. Only alphanumeric characters are allowed. However, you can also enter commas and
+                    hyphens in the address fields.</p>
             </div>
             <div class="modal-body">
                 <div class="alert alert-danger alert-dismissible errorMessage hidden" role="alert">
@@ -324,7 +339,7 @@
                                 <option>Australia</option>
                                 <option>New Zealand</option>
                             </select>
-                            <label class="form-label" for="formCountry">State</label>
+                            <label class="form-label" for="formCountry">Country</label>
                             {{-- <small>Min: 2, Max: 45, only text</small> --}}
                             <p class="errorCountry text-center alert alert-danger hidden"></p>
                         </div>
@@ -396,6 +411,8 @@
         });
     });
 
+
+
     // add a new address
     $(document).on('click', '.add-modal', function () {
         $('.modal-title').text('Add a New Address to your Account');
@@ -429,6 +446,10 @@
                     console.log(data.responseJSON);
                     $('.errorMessage').removeClass('hidden');
                     $('.errorMessage').text("We received a 500 (Internal Server Error).  Check your console log for more information.");
+                    setTimeout(function() {
+                        $('.errorMessage').addClass('hidden');
+                    }, 20000);
+
                 }
             },
             success: function (data) {
@@ -495,7 +516,7 @@
                     setTimeout(function() {
                         $('#addModal').modal('hide');
                         window.location.href = '/account';
-                    }, 5000);
+                    }, 2000);
 
                 }
             },
@@ -511,6 +532,477 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="showModal" class="modal XXfade" role="dialog">
+    <div class="modal-dialog" style="max-width: 500px;">
+        <div class="modal-content rounded-5 shadow-5-strong">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="address1">Address 1:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="address1_show" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="address2">Address 2:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="address2_show" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="suburb">Suburb/City:</label>
+                        <div class="col-sm-10">
+                            <input type="name" class="form-control" id="suburb_show" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="state">State:</label>
+                        <div class="col-sm-10">
+                            <input type="name" class="form-control" id="state_show" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="postcode">Postcode:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="postcode_show" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="country">Country:</label>
+                        <div class="col-sm-10">
+                            <input type="name" class="form-control" id="country_show" disabled></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
+                        <span class='glyphicon glyphicon-remove'></span> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Show a post
+    $(document).on('click', '.show-modal', function () {
+        $('.modal-title').text('Expanded Address Data');
+        $('#id_show').val($(this).data('user_id'));
+        $('#address1_show').val($(this).data('address1'));
+        $('#address2_show').val($(this).data('address2'));
+        $('#suburb_show').val($(this).data('suburb'));
+        $('#state_show').val($(this).data('state'));
+        $('#postcode_show').val($(this).data('postcode'));
+        $('#country_show').val($(this).data('country'));
+        $('#showModal').modal('show');
+    });
+    // Edit a post
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal form to EDIT an existing address -->
+<div id="editAddressModal" class="modal XXfade" role="dialog">
+    <div class="modal-dialog" style="max-width: 500px;">
+        <div class="modal-content rounded-5 shadow-5-strong">
+            <div class="modal-header" style="display: block;">
+                {{-- <button type="button" class="close" data-dismiss="modal">×</button> --}}
+                <h2 class="modal-title">Edit this Existing Address</h2>
+                <p>All fields are mandatory except Address Line 2.</p>
+                <p>If you live in New Zealand you don't have to fill in
+                    the State field. Only alphanumeric characters are allowed. However, you can also enter commas and
+                    hyphens in the address fields.</p>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible errorMessage hidden" role="alert">
+                    We received a 500 (Internal Server Error). Check your console log for more information.
+                </div>
+                <form class="form-horizontal" role="form" style="font-size: 16px;">
+                    @csrf
+                    <div class="form-outline mb-4">
+                        <input type="text" id="editID" class="form-control active hidden disabled" />
+                        <label class="form-label" for="editID" disabled>Record ID</label>
+                        {{-- <small>Max: 45, only alphanumeric text</small> --}}
+                        <p class="errorEditID text-center alert alert-danger hidden"></p>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="editAddress1" class="form-control active" />
+                        <label class="form-label" for="formAddress1">Address1</label>
+                        {{-- <small>Max: 45, only alphanumeric text</small> --}}
+                        <p class="errorEditAddress1 text-center alert alert-danger hidden"></p>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="editAddress2" class="form-control active" />
+                        <label class="form-label" for="formAddress2">Address2</label>
+                        {{-- <small>Max: 45, only alphanumeric text, not mandatory</small> --}}
+                        <p class="errorEditAddress2 text-center alert alert-danger hidden"></p>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-outline col-sm-6">
+                            <input type="text" id="editSuburb" class="form-control active">
+                            <label class="form-label" for="formSuburb">Suburb/City</label>
+                            {{-- <small>Min: 2, Max: 45, only text</small> --}}
+                            <p class="errorEditSuburb text-center alert alert-danger hidden"></p>
+                        </div>
+                        <div class="form-outline col-sm-6">
+                            <select id="editState" class="form-select form-control active">
+                                <option selected></option>
+                                <option>ACT</option>
+                                <option>NSW</option>
+                                <option>QLD</option>
+                                <option>SA</option>
+                                <option>VIC</option>
+                                <option>WA</option>
+                            </select>
+                            <label class="form-label" for="formState">State</label>
+                            {{-- <small>Min: 2, Max: 45, only text</small> --}}
+                            <p class="errorEditState text-center alert alert-danger hidden"></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-outline col-md-4">
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="">
+                        <div class="form-outline col-sm-6">
+                            <input type="number" id="editPostcode" class="form-control active">
+                            <label class="form-label" for="formPostcode">Post Code</label>
+                            {{-- <small>Min: 2, Max: 45, only text</small> --}}
+                            <p class="errorEditPostcode text-center alert alert-danger hidden"></p>
+                        </div>
+                        <div class="form-outline col-sm-6">
+                            <select id="editCountry" class="form-select form-control active">
+                                <option selected></option>
+                                <option>Australia</option>
+                                <option>New Zealand</option>
+                            </select>
+                            <label class="form-label" for="formCountry">State</label>
+                            {{-- <small>Min: 2, Max: 45, only text</small> --}}
+                            <p class="errorEditCountry text-center alert alert-danger hidden"></p>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary buttonUpdateAddress">
+                        <span id="" class='glyphicon glyphicon-check'></span><i class="bi-plus-circle"></i> Save
+                    </button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                        <span class='glyphicon glyphicon-remove'><i class="bi-x-square"></i></span> Close
+                    </button>
+                    <p class="successMessage text-center hidden">Successfully Updated. Please stand by....</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Edit an Existing Address
+    $(document).on('click', '.edit-modal', function () {
+        $('.modal-title').text('Edit your existing Address Data');
+        $('#editID').val($(this).data('id'));
+        $('#editAddress1').val($(this).data('address1'));
+        $('#editAddress2').val($(this).data('address2'));
+        $('#editSuburb').val($(this).data('suburb'));
+        $('#editState').val($(this).data('state'));
+        $('#editPostcode').val($(this).data('postcode'));
+        $('#editCountry').val($(this).data('country'));
+        $('#editAddressModal').modal('show');
+        $('.errorEditAddress1').addClass('hidden');
+        $('.errorEditAddress2').addClass('hidden');
+        $('.errorEditSuburb').addClass('hidden');
+        $('.errorEditState').addClass('hidden');
+        $('.errorEditPostcode').addClass('hidden');
+        $('.errorEditCountry').addClass('hidden');
+        $('.successMessage').addClass('hidden');
+    });
+    $('.modal-footer').on('click', '.buttonUpdateAddress', function () {
+        $('.errorEditAddress1').addClass('hidden');
+        $('.errorEditAddress2').addClass('hidden');
+        $('.errorEditSuburb').addClass('hidden');
+        $('.errorEditState').addClass('hidden');
+        $('.errorEditPostcode').addClass('hidden');
+        $('.errorEditCountry').addClass('hidden');
+        $('.successMessage').addClass('hidden');
+        $.ajax({
+            type: 'POST',
+            url: 'updateAddress',
+            data: {
+                '_token':   $('input[name=_token]').val(),
+                'id':       $('#editID').val(),
+                'user_id': "{{ Session::get('user_id') }}",
+                'address1': $('#editAddress1').val(),
+                'address2': $('#editAddress2').val(),
+                'suburb':   $('#editSuburb').val(),
+                'state':    $('#editState').val(),
+                'postcode': $('#editPostcode').val(),
+                'country':  $('#editCountry').val(),
+            },
+            error: function (data) {
+                if ((data.status == 500 )) {
+                    toastr.error('Server Error!' + data.message, 'Error Alert', {timeOut: 5000});
+                    console.log('Hmmmmm...  we should not be here....');
+                    console.log(data); 
+                    console.log(data.responseJSON);
+                    $('.errorMessage').removeClass('hidden');
+                    $('.errorMessage').text("We received a 500 (Internal Server Error).  Check your console log for more information.");
+                    setTimeout(function() {
+                        $('.errorMessage').addClass('hidden');
+                    }, 20000);
+
+                }
+            },
+            success: function (data) {
+                $('.errorEditAddress1').addClass('hidden');
+                $('.errorEditAddress2').addClass('hidden');
+                $('.errorEditSuburb').addClass('hidden');
+                $('.errorEditState').addClass('hidden');
+                $('.errorEditPostcode').addClass('hidden');
+                $('.errorEditCountry').addClass('hidden');
+                if ((data.errors)) {
+                    setTimeout(function () {
+                        toastr.error('Validation error!', 'Error Alert', {timeOut: 5000});
+                    }, 500);
+                    if (data.errors.address1) {
+                        $('.errorEditAddress1').removeClass('hidden');
+                        $('.errorEditAddress1').text(data.errors.address1);
+                    }
+                    if (data.errors.address2) {
+                        $('.errorEditAddress2').removeClass('hidden');
+                        $('.errorEditAddress2').text(data.errors.address2);
+                    }
+                    if (data.errors.suburb) {
+                        $('.errorEditSuburb').removeClass('hidden');
+                        $('.errorEditSuburb').text(data.errors.suburb);
+                    }
+                    if (data.errors.state) {
+                        $('.errorEditState').removeClass('hidden');
+                        $('.errorEditState').text(data.errors.state);
+                    }
+                    if (data.errors.postcode) {
+                        $('.errorEditPostcode').removeClass('hidden');
+                        $('.errorEditPostcode').text(data.errors.postcode);
+                    }
+                    if (data.errors.country) {
+                        $('.errorEditCountry').removeClass('hidden');
+                        $('.errorEditCountry').text(data.errors.country);
+                    }
+                } else {
+                    toastr.success('You successfully added a new Address', 'Congratulations!', {timeOut: 5000});
+                    $('.successMessage').removeClass('hidden');
+                    mstring = "<tr class='address" + data.id + "'>" +
+                                "<td><strong>" + data.address1 + "</strong><br>" + data.suburb + ", " + data.postcode + "</td>" +
+                                "<td>" + data.just_now + "</td>" +
+                                "<td>" +
+                                    "<button class='show-modal btn btn-success' data-id='" + data.id + "' data-user_id=='" + data.user_id + "' " +
+                                    "data-address1='" + data.address1 + "' data-address1='" + data.address2 + "' " +
+                                    "data-suburb='" + data.suburb + "' data-state='" + data.state + "' " +
+                                    "data-postcode='" + data.postcode + "' data.country='" + data.country + "' " +
+                                    "style='margin-right: 4px;'> Show</button>" +
+                                    "<button class='edit-modal btn btn-info' data-id='" + data.id + "' data-user_id=='" + data.user_id + "' " +
+                                    "data-address1='" + data.address1 + "' data-address1='" + data.address2 + "' " +
+                                    "data-suburb='" + data.suburb + "' data-state='" + data.state + "' " +
+                                    "data-postcode='" + data.postcode + "' data.country='" + data.country + "' " +
+                                    "style='margin-right: 4px;'><span class='glyphicon glyphicon-eye-open'></span> Edit</button>" +
+                                    "<button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-user_id=='" + data.user_id + "' " +
+                                    "data-address1='" + data.address1 + "' data-address1='" + data.address2 + "' " +
+                                    "data-suburb='" + data.suburb + "' data-state='" + data.state + "' " +
+                                    "data-postcode='" + data.postcode + "' data.country='" + data.country + "' " +
+                                    "style='margin-right: 4px;'><span class='glyphicon glyphicon-eye-open'></span> Delete</button>" +
+                                "</td>" +
+                            "</tr>" ;
+                    $('.address' + data.id).replaceWith(mstring);
+
+                    setTimeout(function() {
+                        $('#editAddressModal').modal('hide');
+                        window.location.href = '/account';
+                    }, 2000);
+
+                }
+            },
+        });
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="deleteAddressModal" class="modal XXfade" role="dialog">
+    <div class="modal-dialog" style="max-width: 500px;">
+        <div class="modal-content rounded-5 shadow-5-strong">
+            <div class="modal-header" style="display: block;">
+                <h2 class="modal-title">Are you sure you want to delete this Address?</h2>
+                <p>Please Note: Unless you have at least one
+                    valid address you won't be able to proceed with any online purchases .</p>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible errorMessage hidden" role="alert">
+                    We received a 500 (Internal Server Error). Check your console log for more information.
+                </div>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="id">Record ID:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="id_delete" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="address1">Address 1:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="address1_delete" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="address2">Address 2:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="address2_delete" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="suburb">Suburb/City:</label>
+                        <div class="col-sm-10">
+                            <input type="name" class="form-control" id="suburb_delete" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="state">State:</label>
+                        <div class="col-sm-10">
+                            <input type="name" class="form-control" id="state_delete" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="postcode">Postcode:</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="postcode_delete" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label label-bold col-sm-2" for="country">Country:</label>
+                        <div class="col-sm-10">
+                            <input type="name" class="form-control" id="country_delete" disabled></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger delete">
+                        <span id="" class='glyphicon glyphicon-trash'></span> Delete
+                    </button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
+                        <span class='glyphicon glyphicon-remove'></span> Close
+                    </button>
+                    <p class="successMessage text-center hidden">Successfully Deleted. Please stand by....</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // delete a post
+    $(document).on('click', '.delete-modal', function () {
+        $('.modal-title').text('Are you sure you want to proceed?');
+        $('#id_delete').val($(this).data('id'));
+        $('#title_delete').val($(this).data('title'));
+        $('#address1_delete').val($(this).data('address1'));
+        $('#address2_delete').val($(this).data('address2'));
+        $('#suburb_delete').val($(this).data('suburb'));
+        $('#state_delete').val($(this).data('state'));
+        $('#postcode_delete').val($(this).data('postcode'));
+        $('#country_delete').val($(this).data('country'));
+        id = $('#id_delete').val();
+        $('#deleteAddressModal').modal('show');    
+        $('.successMessage').addClass('hidden');
+    });
+    $('.modal-footer').on('click', '.delete', function () {
+        $.ajax({
+            type: 'POST',
+            url: 'deleteAddress',
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id':       $('#id_delete').val(),
+            },
+            error: function (data) {
+                if ((data.status == 500 )) {
+                    toastr.error('Server Error!' + data.message, 'Error Alert', {timeOut: 5000});
+                    console.log('Hmmmmm...  we should not be here....');
+                    console.log(data); 
+                    console.log(data.responseJSON);
+                    $('.errorMessage').removeClass('hidden');
+                    $('.errorMessage').text("We received a 500 (Internal Server Error).  Check your console log for more information.");
+                }
+            },
+
+            success: function (data) {
+                toastr.success('Successfully deleted.', 'Success Alert', {timeOut: 5000});
+                $('.successMessage').removeClass('hidden');
+                $('.address' + data['id']).remove();
+                setTimeout(function() {
+                    $('#deleteAddressModal').modal('hide');
+                    $('.successMessage').addClass('hidden');
+                    // window.location.href = '/account';
+                }, 2000);
+            }
+        });
+    });
+</script>
 
 
 

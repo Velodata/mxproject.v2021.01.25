@@ -239,7 +239,7 @@
                         <button type="button" class="btn btn-danger delete" data-dismiss="modal">
                             <span id="" class='glyphicon glyphicon-trash'></span> Delete
                         </button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
                             <span class='glyphicon glyphicon-remove'></span> Close
                         </button>
                     </div>
@@ -398,7 +398,23 @@
                         }
                     } else {
                         toastr.success('Successfully updated Post!', 'Success Alert', {timeOut: 5000});
-                        $('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.title + "</td><td>" + data.content + "</td><td class='text-center'><input type='checkbox' class='edit_published' data-id='" + data.id + "'></td><td>Right now</td><td><button class='show-modal btnbtn-success' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphiconglyphicon-eye-open'></span> Show</button><button class='edit-modal btnbtn-info' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphiconglyphicon-edit'></span> Edit</button><button class='delete-modal btnbtn-danger' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphiconglyphicon-trash'></span> Delete</button></td></tr>");
+                        mstring = "<tr class='item" + data.id + "'>" +
+                                    "<td>" + data.id + "</td>" + 
+                                    "<td>" + data.title + "</td>" +
+                                    "<td>" + data.content + "</td>" +
+                                    "<td class='text-center'><input type='checkbox' class='edit_published' data-id='" + data.id + "'></td>" +
+                                    "<td>Right now</td>" +
+                                    "<td>" +
+                                        "<button class='show-modal btn btn-success' data-id='" + data.id + "' data-title='" + data.title + "' " +
+                                        "data-content='" + data.content + "'><span class='glyphicon glyphicon-eye-open'></span> Show</button>" +
+                                        "<button class='edit-modal btn btn-info' data-id='" + data.id + "' data-title='" + data.title + "' " +
+                                        "data-content='" + data.content + "'><span class='glyphiconglyphicon-edit'></span> Edit</button>" +
+                                        "<button class='delete-modal btnbtn-danger' data-id='" + data.id + "' data-title='" + data.title + "' " +
+                                        "data-content='" + data.content + "'><span class='glyphiconglyphicon-trash'></span> Delete</button>" +
+                                    "</td>" +
+                                "</tr>" ;
+                        // $('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.title + "</td><td>" + data.content + "</td><td class='text-center'><input type='checkbox' class='edit_published' data-id='" + data.id + "'></td><td>Right now</td><td><button class='show-modal btnbtn-success' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphiconglyphicon-eye-open'></span> Show</button><button class='edit-modal btnbtn-info' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphiconglyphicon-edit'></span> Edit</button><button class='delete-modal btnbtn-danger' data-id='" + data.id + "' data-title='" + data.title + "' data-content='" + data.content + "'><span class='glyphiconglyphicon-trash'></span> Delete</button></td></tr>");
+                        $('.item' + data.id).replaceWith(mstring);
                         if (data.is_published) {
                             $('.edit_published').prop('checked', true);
                             $('.edit_published').closest('tr').addClass('warning');

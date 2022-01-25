@@ -88,6 +88,11 @@ input:focus-visible {
   outline: -webkit-focus-ring-color auto 1px;
 }
 
+.form-group .label-bold {
+  font-weight: 700;
+  margin-top: 10px;
+}
+
 .modal-header,
 .modal-footer {
   display: block;

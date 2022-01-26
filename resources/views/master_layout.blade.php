@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
     <!-- CSFR token for ajax call -->
     <meta name="_token" content="{{ csrf_token() }}" />
-    <title>Laravel Coding Challenge</title>
+    <title>MX Coding Challenge</title>
 
 
     <!-- jQuery 3.2.1-->

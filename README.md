@@ -1,6 +1,6 @@
 ## About this coding challenge
 
-Hello, my name is Ivan Vetsich and I am the authoer of the various controllers, database migrations, and blade files in this Github repository.
+Hello, my name is Ivan Vetsich and I am the author of the various controllers, database migrations, and blade files in this Github repository.
 
 This coding challenge was extended by the MX Super Store, a successful online retailer in the motocross marketplace.
 

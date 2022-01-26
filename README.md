@@ -26,7 +26,7 @@ Candidate is free to extend the acceptance criteria at their discretion.
 
 ## The resulting software, as created by me, Ivan Vetsich
 
-You can see a "LIVE PREVIEW" of the MX Store coding challenge at [I might pull it down at a later date](https://mxstore.velodata.org).
+You can see a "LIVE PREVIEW" of the MX Store coding challenge at [I might pull it down at a later date](https://mx.velodata.org).
 
 Velodata.org is my own website, I have a PHP cyber security system for Wordpress. [You can visit Velodata here ](https://velodata.org).
 

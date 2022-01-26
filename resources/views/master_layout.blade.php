@@ -182,16 +182,14 @@
                     </ul>
                     <div class="navbar-nav ml-auto">
                         @if(Session::get('user'))
-                        <a class="nav-item nav-link navbar-brand navbar-title" href="/account">Welcome, {{
+                        <a class="nav-item nav-link navbar-title" href="/account">Welcome, {{
                             Session::get('user') }}</a>
-                        <a class="nav-item nav-link navbar-brand" href="/logout">Logout</a>
+                        <a class="nav-item nav-link " href="/logout">Logout</a>
                         @else
                         {{-- <a class="nav-item nav-link navbar-brand active" href="/login">Login</a> --}}
                         {{-- <a class="nav-item nav-link navbar-brand active" href="/register">Register</a> --}}
-                        <a class="nav-item nav-link navbar-brand active showUserLoginModal"
-                            href="javascript:void(0)">Login</a>
-                        <a class="nav-item nav-link navbar-brand active addNewUserModal"
-                            href="javascript:void(0)">Register</a>
+                        <a class="nav-item nav-link active showUserLoginModal" href="javascript:void(0)">Login</a>
+                        <a class="nav-item nav-link active addNewUserModal" href="javascript:void(0)">Register</a>
                         @endif
                     </div>
                 </div>
@@ -213,10 +211,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Link</a>
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item active dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -244,413 +239,39 @@
                                 </ul>
                             </li>
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="navbar-nav ml-auto">
                             @if(Session::get('user'))
-                            <a class="nav-item nav-link navbar-brand navbar-title" href="/account">Welcome, {{
-                                Session::get('user') }}</a>
-                            <a class="nav-item nav-link navbar-brand" href="/logout">Logout</a>
+                            <a class="nav-item nav-link active" href="/account"><strong>{{
+                                    Session::get('user') }}</strong></a>
+                            <a class="nav-item nav-link active" href="/logout">Logout</a>
                             @else
                             {{-- <a class="nav-item nav-link navbar-brand active" href="/login">Login</a> --}}
                             {{-- <a class="nav-item nav-link navbar-brand active" href="/register">Register</a> --}}
-                            <a class="nav-item nav-link navbar-brand active showUserLoginModal"
-                                href="javascript:void(0)">Login</a>
-                            <a class="nav-item nav-link navbar-brand active addNewUserModal"
-                                href="javascript:void(0)">Register</a>
+                            <a class="nav-item nav-link active showUserLoginModal" href="javascript:void(0)">Login</a>
+                            <a class="nav-item nav-link active addNewUserModal" href="javascript:void(0)">Register</a>
                             @endif
                         </div>
-                        {{-- <form class="d-flex">
+                        <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form> --}}
+                        </form>
                     </div>
                 </div>
             </nav>
             <!-- Navbar -->
-
-
-            @if ( 3 < 2 ) <!-- Background image -->
-                <div id="intro" class="bg-image shadow-2-strong">
-                    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-xl-5 col-md-8" style="max-width: 500px;">
-                                    <form class="bg-white  rounded-5 shadow-5-strong p-5" style="font-size: 16px;">
-                                        <!-- Email input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="email" id="form1Example1" class="form-control" />
-                                            <label class="form-label" for="form1Example1">Email address</label>
-                                        </div>
-
-                                        <!-- Password input -->
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="form1Example2" class="form-control" />
-                                            <label class="form-label" for="form1Example2">Password</label>
-                                        </div>
-
-                                        <!-- 2 column grid layout for inline styling -->
-                                        <div class="row mb-4">
-                                            <div class="col d-flex justify-content-center">
-                                                <!-- Checkbox -->
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="form1Example3" checked />
-                                                    <label class="form-check-label" for="form1Example3">
-                                                        Remember me
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col text-center">
-                                                <!-- Simple link -->
-                                                <a href="#!">Forgot password?</a>
-                                            </div>
-                                        </div>
-
-                                        <!-- Submit button -->
-                                        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script>
-                    $(function () {
-                $(document).on('blur', '#form1Example1', function () {
-                    if($('#form1Example1').val() !='' ) {
-                        $('#form1Example1').addClass('active');
-                    }else{
-                        $('#form1Example1').removeClass('active');
-                    }  
-                });
-                $(document).on('blur', '#form1Example2', function () {
-                    if($('#form1Example2').val() !='' ) {
-                        $('#form1Example2').addClass('active');
-                    }else{
-                        $('#form1Example@').removeClass('active');
-                    }  
-                });
-            });
-                </script>
-                <!-- Background image -->
-                @endif
-
-
-
-
     </header>
 
 
-    {{-- <section class="content d-flex justify-content-center"> --}}
-        @yield('content')
-        {{-- </section> --}}
 
+    @include('partials.modal_user_login')
 
-    <div id="userRegisterModal" class="modal fade" role="dialog">
-        <div class="modal-dialog" style="max-width: 500px; font-size: 16px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    {{-- <button type="button" class="close" data-bs-dismiss="modal">
-                        Close
-                    </button> --}}
-                    <h1>Sign Up</h1>
-                    <h5>It's quick and easy</h5>
-                </div>
-                <div class="modal-body">
-                    <form action="addNewUser" method="post" return="false">
-                        <div class="row form-group">
-                            <div class="col-sm-6 form-outline mb-4">
-                                <input type="email" id="firstname_add" class="form-control" />
-                                <label class="form-label" for="firstname_add">First Name</label>
-                                <p class="errorFirstName xxtext-center alert alert-danger hidden"></p>
-                            </div>
-                            <div class="col-sm-6 form-outline mb-4">
-                                <input type="email" id="secondname_add" class="form-control" />
-                                <label class="form-label" for="secondname_add">Second Name</label>
-                                <p class="errorSecondName xxtext-center alert alert-danger hidden"></p>
-                            </div>
-                        </div>
+    @include('partials.modal_user_register')
 
-                        @csrf
-
-                        <!-- Email input -->
-                        <div class="form-outline mb-4">
-                            <input type="email" id="email_add" class="form-control" />
-                            <label class="form-label" for="email_add">Email address</label>
-                            <p class="errorEmail text-center alert alert-danger hidden"></p>
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline mb-4">
-                            <input type="password" id="password_add" class="form-control" />
-                            <label class="form-label" for="password_add">Password</label>
-                            <p class="errorPassword text-center alert alert-danger hidden"></p>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <input type="password" id="confirm_password_add" class="form-control" />
-                            <label class="form-label" for="confirm_password_add">Confirm Password</label>
-                        </div>
-
-                        {{-- <div class="row form-group">
-                            <div class="col-sm-12"> <label class="userRegister">Mobile</label>
-                                <input type="number" name="mobile" value="{{ old('mobile') }}" class="form-control"
-                                    id="mobile_add" placeholder="Enter Mobile Number" required>
-                                <p class="errorMobile text-center alert alert-danger hidden"></p>
-                                </label>
-                            </div>
-                        </div> --}}
-
-                        {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                    </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success buttonAddUser btn-block">
-                            <span id="" class='glyphicon glyphicon-check'></span> Sign Up!
-                        </button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">
-                            <span class='glyphicon glyphicon-remove'></span> Close
-                        </button>
-                        <div class="card-footer d-inline-block">
-                            <p class="float-right mt-2"> Already have an account?
-                                <a class="active showUserLoginModal" href="javascript:void(0)">Login</a>
-                                {{-- <a href="{{ url('user-login')}}" class="text-success"> Login </a> --}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        $('.modal-footer').on('click', '.buttonAddUser', function () {
-            $('.errorFirstName').addClass('hidden');
-            $('.errorSecondName').addClass('hidden');
-            $('.errorEmail').addClass('hidden');
-            $('.errorPassword').addClass('hidden');
-            $('.errorConfirmPassword').addClass('hidden');
-            // $('.errorMobile').addClass('hidden'); 
-            $('#userLoginModal').modal('hide');
-            $.ajax({
-                type: 'POST',
-                url: 'addNewUser',
-                data: {
-                    '_token': $('input[name=_token]').val(),
-                    'firstname': $('#firstname_add').val(),
-                    'secondname': $('#secondname_add').val(),
-                    'email': $('#email_add').val(),
-                    'password': $('#password_add').val(),
-                    'confirm_password': $('#confirm_password_add').val(),
-                    // 'mobile': $('#mobile_add').val(),
-                },
-
-                error: function (data) {
-                    if ((data.status = 500 && data.responseJSON)) {
-                        $('#addModal').modal('show');
-                        toastr.error('Validation error!' + data.message, 'Error Alert', {timeOut: 5000});
-                        console.log(data.responseJSON);                    
-                        $('.errorEmail').removeClass('hidden');
-                        $('.errorEmail').text("We've received a 500 (Internal Server Error).  Check your console log for more information.");
-                    }
-                },
-
-                success: function (data) {
-                    if ((data.errors)) {
-                        setTimeout(function () {
-                            $('#addModal').modal('show');
-                            toastr.error('Validation error!', 'Error Alert', {timeOut: 10000});
-                        }, 500);
-                        if (data.errors.firstname) {
-                            $('.errorFirstName').removeClass('hidden');
-                            $('.errorFirstName').text(data.errors.firstname);
-                        }
-                        if (data.errors.secondname) {
-                            $('.errorSecondName').removeClass('hidden');
-                            $('.errorSecondName').text(data.errors.secondname);
-                        }
-                        if (data.errors.email) {
-                            $('.errorEmail').removeClass('hidden');
-                            $('.errorEmail').text(data.errors.email);
-                        }
-                        if (data.errors.password) {
-                            $('.errorPassword').removeClass('hidden');
-                            $('.errorPassword').text(data.errors.password);
-                            }
-                        if (data.errors.confirm_password) {
-                            $('.errorConfirmPassword').removeClass('hidden');
-                            $('.errorConfirmPassword').text(data.errors.confirm_password);
-                            }
-                        if (data.errors.mobile) {
-                            $('.errorMobile').removeClass('hidden');
-                            $('.errorMobile').text(data.errors.mobile);
-                        }
-                    } else {
-                        toastr.success('You have successfully added a new user to the system! ' + 
-                                       'Please log in with your email and password.' + 
-                                       '', 'Congratulations!', {timeOut: 10000});
-                        $('#userRegisterModal').modal('hide');
-                        setTimeout(function() {
-                            $('#userLoginModal').modal('show');
-                        }, 2000); 
-                    }
-                },
-            });
-        });
-    </script>
-
-
-
-
-
-
-
-
-
-
-    <div id="userLoginModal" class="modal fade" role="dialog">
-        <div class="modal-dialog" style="max-width: 500px;">
-            <div class="modal-content" style="font-size: 16px;">
-                <div class="modal-header">
-                    {{-- <button type="button" class="close" data-dismiss="modal">×</button> --}}
-                    <h1>Login to the System</h1>
-                    <h5>It's quick and easy</h5>
-                </div>
-                <div class="modal-body">
-                    <form method="post">
-                        @csrf
-                        <!-- Email input -->
-                        <div class="form-outline mb-4">
-                            <input type="email" id="email_login" class="form-control" />
-                            <label class="form-label" for="email_login">Email address</label>
-                            <p class="errorEmail text-center alert alert-danger hidden"></p>
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline mb-4">
-                            <input type="password" id="password_login" class="form-control" />
-                            <label class="form-label" for="password_login">Password</label>
-                            <p class="errorPassword text-center alert alert-danger hidden"></p>
-                        </div>
-
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4">
-                            <div class="col d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="form1Example3"
-                                        checked />
-                                    <label class="form-check-label" for="form1Example3">
-                                        Remember me
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col text-center">
-                                <!-- Simple link -->
-                                <a href="#!" style="text-decoration: unset;">Forgot password?</a>
-                            </div>
-                        </div>
-
-                        <!-- Submit button -->
-                        {{-- <button type="button" class="btn btn-primary btn-block buttonLoginUser">Sign in</button>
-                        --}}
-                        {{-- <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" value="{{ old('email') }}" class="form-control"
-                                id="email_login" placeholder="Enter Email" required>
-                            <p class="errorEmail text-center alert alert-danger hidden"></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" id="password_login"
-                                placeholder="Enter Password" required>
-                            <p class="errorPassword text-center alert alert-danger hidden"></p>
-                        </div> --}}
-                        {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                    </form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary buttonLoginUser btn-block">
-                            <i class="bi-box-arrow-in-right"></i></i> Login
-                        </button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                            <span class='glyphicon glyphicon-remove'><i class="bi-x-square"></i></span> Close
-                        </button>
-                        <p class="successMessage text-center hidden">Successful Login. Please stand by....</p>
-                        <div class="card-footer d-inline-block">
-                            <p class="float-right mt-2"> Don't have an account?
-                                <a class="active addNewUserModal" href="javascript:void(0)"> Register</a>
-                                {{-- <a href="{{ url('user-registration')}}" class="text-success">
-                                    Register </a> --}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        $(document).on('blur', '.form-control', function () {
-            if($(this).val() !='' ) {
-                $(this).addClass('active');
-            }else{
-                $(this).removeClass('active');
-            }  
-        });
-
-        $('.modal-footer').on('click', '.buttonLoginUser', function () {
-            $('.errorEmail').addClass('hidden');
-            $('.errorPassword').addClass('hidden');
-            $.ajax({
-                type: 'POST',
-                url: 'loginUser',
-                data: {
-                    '_token': $('input[name=_token]').val(),
-                    'email': $('#email_login').val(),
-                    'password': $('#password_login').val(),
-                },
-                error: function (data) {
-                    if ((data.status = 500 && data.responseJSON)) {
-                        $('#addModal').modal('show');
-                        toastr.error('Validation error!' + data.message, 'Error Alert', {timeOut: 5000});
-                        console.log(data.responseJSON);                    
-                        $('.errorEmail').removeClass('hidden');
-                        $('.errorEmail').text("We've received a 500 (Internal Server Error).  Check your console log for more information.");
-                    }
-                },
-                success: function (data) {
-                    
-                    if ((data.errors)) {
-                        setTimeout(function () {
-                            $('#addModal').modal('show');
-                            toastr.error('Validation error!', 'Error Alert', {timeOut: 5000});
-                        }, 500);
-                        if (data.errors.email) {
-                            $('.errorEmail').removeClass('hidden');
-                            $('.errorEmail').text(data.errors.email);
-                        }
-                        if (data.errors.password) {
-                            $('.errorPassword').removeClass('hidden');
-                            $('.errorPassword').text(data.errors.password);
-                            }
-                        return;
-                    } 
-                    toastr.success('You have Successfully logged in as ' + data.name + 
-                                    "", 'Congratulations!', {timeOut: 5000});
-                    $('.successMessage').removeClass('hidden');
-                    setTimeout(function() {
-                        $('#userLoginModal').modal('hide');
-                        window.location.href = '/account';
-                    }, 5000);
-                },
-            });
-        });
-    </script>
-
-
-
+    @yield('content')
 
 
 

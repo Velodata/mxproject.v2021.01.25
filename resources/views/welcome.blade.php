@@ -51,24 +51,28 @@
                                         d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
                                     </path>
                                 </svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs"
-                                        class="underline text-gray-900 dark:text-white">The Coding
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/account"
+                                        class="underline text-gray-900 dark:text-white">The MX Coding
                                         Challenge</a>
                                 </div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 xxtext-gray-600 dark:text-gray-400 text-sm">
-                                    This particular Coding Challenge requires a candidate to write a project
-                                    using
-                                    Laravel
-                                    and Vue.js
-                                    which gives a user the ability to either Login as a Registered User, and
-                                    or
-                                    Register
-                                    as
-                                    a new User.
-
+                                    <p>The following specifications define the MX Super Store Coding Challenge.</p>
+                                    <p>Using Vue.js and Laravel, create a simple application that meets the following
+                                        acceptance criteria:</p>
+                                    <ul>
+                                        <li>Users can register for a new account. </li>
+                                        <li>Users can login to their account. </li>
+                                        <li>Logged in users are sent to a page that allows them to edit their profile
+                                            with the following acceptance criteria</li>
+                                        <li>Users can update their first and last names</li>
+                                        <li>Users can add a phone number to their profile</li>
+                                        <li>Users can add, edit or delete multiple addresses on their profile.</li>
+                                        <li>Each address is comprised of 2 street lines, suburb, state, postcode and
+                                            country.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -90,16 +94,19 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 xxtext-gray-600 dark:text-gray-400 text-sm">
-                                    This part of the Coding Challenge is a voluntary demonstration of my
-                                    skills.
-                                    Think
-                                    of
-                                    the demo
-                                    as a really basic form of Twitter which uses javascript AJAX functions
-                                    mixed
-                                    with a
-                                    typical
-                                    Laravel Controller which performs typical CRUD operations.
+                                    <p>This part of the Coding Challenge is a voluntary demonstration of my
+                                        skills. Think of the demo as a really basic form of Twitter which uses
+                                        javascript AJAX functions mixed with a typical Laravel Controller which performs
+                                        typical CRUD operations.</p>
+
+                                    <p>I'm a big fan of using AJAX JSON responses to perform Validation authentication.
+                                        Yes, I'm aware it's quite possible to drive the entire Laravel authentication
+                                        process from the backend but I find that a bit clunky. I like being able to get
+                                        HTTP 200 JSON responses which fluidly update a business form without needing to
+                                        update (or refresh) an entire page. If you're a programmer, make sure to check
+                                        out the programming in controllers/user_account.blade.php. There's some very
+                                        nice javascript AJAX stuff going on that you can learn from.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -112,21 +119,20 @@
                                         d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
                                     </path>
                                 </svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/"
-                                        class="underline text-gray-900 dark:text-white">Laravel News</a>
+                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
+                                    How to use this software.
                                 </div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 xxtext-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all
-                                    of
-                                    the
-                                    latest
-                                    and most important news in the Laravel ecosystem, including new package
-                                    releases
-                                    and
-                                    tutorials.
+                                    If this is the first time you've seen this software screen, your first goal is to
+                                    register a new account. You can use a fake email address. This is purely a
+                                    demonstration system. After you Register a new account,
+                                    you will be taken to your Account Dashboard. In it, you can edit your private
+                                    information, and you can also Add, Edit, and Delete multiple shipping addresses.
+                                    After that, you can register even more accounts and add yet more shipping addresses.
+                                    The addresses which belong to each account are not visible to other accounts.
                                 </div>
                             </div>
                         </div>
@@ -140,8 +146,8 @@
                                     </path>
                                 </svg>
                                 <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
-                                    Vibrant
-                                    Ecosystem</div>
+                                    Vibrant Ecosystem
+                                </div>
                             </div>
 
                             <div class="ml-12">

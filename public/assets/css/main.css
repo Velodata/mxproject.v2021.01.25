@@ -107,14 +107,19 @@ input:focus-visible {
 }
 
 .navbar-light .navbar-brand {
-  /* color: rgb(255 255 255 / 90%); */
+  color: rgb(128 0 0);
+}
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
+  color: rgba(128, 0, 0, 0.9);
+  background-color: #ffe6e6;
 }
 
 .navbar-light .navbar-nav .active > .nav-link,
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show > .nav-link {
-  /* color: rgb(255 255 255); */
+  color: rgb(128 0 0);
 }
 
 .panel {
@@ -439,8 +444,8 @@ video {
 
 .text-gray-900 {
   --text-opacity: 1;
-  color: #1a202c;
-  color: rgba(26, 32, 44, var(--text-opacity));
+  color: rgb(96 0 0);
+  font-weight: 600;
 }
 
 .underline {

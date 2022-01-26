@@ -3,7 +3,7 @@
 @section('content')
 
 @if(! Session::get('user'))
-<div class="mx-auto xxcol-md-8 xxcol-md-offset-2" style="max-width: 1300px; padding: 0 2rem;">
+<div class="mx-auto xxcol-md-8 xxcol-md-offset-2" style="max-width: 1300px; padding: 2rem;">
     <h1>Sorry, but you're not logged in.</h1>
     <h5><i>Only logged in users can access their Account Administration Page.</i></h5>
     <div class="card-footer d-inline-block">

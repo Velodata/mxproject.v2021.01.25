@@ -358,49 +358,7 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $(document).on('blur', '#formAddress1', function () {
-            if($(this).val() !='' ) {
-                $(this).addClass('active');
-            }else{
-                $(this).removeClass('active');
-            }  
-        });
-        $(document).on('blur', '#formAddress2', function () {
-            if($(this).val() !='' ) {
-                $(this).addClass('active');
-            }else{
-                $(this).removeClass('active');
-            }  
-        });
-        $(document).on('blur', '#formSuburb', function () {
-            if($(this).val() !='' ) {
-                $(this).addClass('active');
-            }else{
-                $(this).removeClass('active');
-            }  
-        });
-        $(document).on('blur', '#formState', function () {
-            if($(this).val() !='' ) {
-                $(this).addClass('active');
-            }else{
-                $(this).removeClass('active');
-            }  
-        });
-        $(document).on('blur', '#formPostcode', function () {
-            if($(this).val() !='' ) {
-                $(this).addClass('active');
-            }else{
-                $(this).removeClass('active');
-            }  
-        });
-        $(document).on('blur', '#formCountry', function () {
-            if($(this).val() !='' ) {
-                $(this).addClass('active');
-            }else{
-                $(this).removeClass('active');
-            }  
-        });
-        $(document).on('blur', '#inputState', function () {
+        $(document).on('blur', '.form-control', function () {
             if($(this).val() !='' ) {
                 $(this).addClass('active');
             }else{

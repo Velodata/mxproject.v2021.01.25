@@ -11,6 +11,10 @@
             <a class="active showUserLoginModal" href="javascript:void(0)"><span style="font-weight: 600;">Login</span>
             </a>
         </p>
+        <p class="float-right mt-2"> Don't have an account?
+            <a class="active addNewUserModal" href="javascript:void(0)"><span style="font-weight: 600;">Register</span>
+            </a>
+        </p>
     </div>
     @if(Session::get('register_status'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">

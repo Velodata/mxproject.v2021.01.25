@@ -26,9 +26,9 @@ Candidate is free to extend the acceptance criteria at their discretion.
 
 ## The resulting software, as created by me, Ivan Vetsich
 
-You can see a "LIVE PREVIEW" of the MX Store coding challenge at [I might pull it down at a later date](https://mx.velodata.org).
+You can see a "LIVE PREVIEW" of the MX Store coding challenge at [mx.velodata.org](https://mx.velodata.org). Please Note: I might pull that link down at a later date for whatever reason.
 
-Velodata.org is my own website, I have a PHP cyber security system for Wordpress. [You can visit Velodata here ](https://velodata.org).
+Velodata.org is my own website, I have a PHP cyber security system for Wordpress. [You can visit Velodata.org here ](https://velodata.org).
 
 ### Notes
 
@@ -62,6 +62,6 @@ I'm a big fan of using AJAX JSON responses to perform Validation authentication.
 
 This software was written in Laravel v8.0, and it uses Bootstrap v5.0 plis jQuery v3.6 with a few sprinklings of Bootstrap Icons here and there. I've also included my own CSS in a file called main.css in the /public/assets/css folder.
 
-## Bells and Whistles
+## Intellectual Property.
 
 The software contained in this repository is the sole property of Ivan Vetsich.

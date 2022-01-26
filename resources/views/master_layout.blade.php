@@ -267,15 +267,9 @@
 
 
 
-<<<<<<< HEAD
     @include('partials.modal_user_login')
 
     @include('partials.modal_user_register')
-=======
-    @include('partials.login_modal')
-
-    @include('partials.modal_register')
->>>>>>> a15d1624591f0f0aaa6e50fac2c2d28662201852
 
     @yield('content')
 

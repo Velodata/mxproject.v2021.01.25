@@ -1,6 +1,6 @@
-<div id="userLoginModal" class="modal fade" role="dialog">
-    <div class="modal-dialog" style="max-width: 500px;">
-        <div class="modal-content" style="font-size: 16px;">
+<div id="userLoginModal" class="modal xxfade" role="dialog">
+    <div class="modal-dialog " style="max-width: 500px;">
+        <div class="modal-content rounded-5 shadow-5-strong p-5" style="font-size: 16px;">
             <div class="modal-header">
                 {{-- <button type="button" class="close" data-dismiss="modal">×</button> --}}
                 <h1>Login to the System</h1>
@@ -60,17 +60,16 @@
                 </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary buttonLoginUser btn-block">
-                        <i class="bi-box-arrow-in-right"></i></i> Login
+                        <i class="bi-box-arrow-in-right"></i> Login
                     </button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                        <span class='glyphicon glyphicon-remove'><i class="bi-x-square"></i></span> Close
+                    <button type="button" class="btn btn-warning btn-block" data-bs-dismiss="modal">
+                        <i class="bi-x-octagon"></i> Close
                     </button>
                     <p class="successMessage text-center hidden">Successful Login. Please stand by....</p>
                     <div class="card-footer d-inline-block">
                         <p class="float-right mt-2"> Don't have an account?
                             <a class="active addNewUserModal" href="javascript:void(0)"> Register</a>
-                            {{-- <a href="{{ url('user-registration')}}" class="text-success">
-                                Register </a> --}}
+
                         </p>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 
 
 
-<div id="userRegisterModal" class="modal fade" role="dialog">
+<div id="userRegisterModal" class="modal XXfade" role="dialog">
     <div class="modal-dialog" style="max-width: 500px; font-size: 16px;">
-        <div class="modal-content">
+        <div class="modal-content rounded-5 shadow-5-strong p-5">
             <div class="modal-header">
                 
                 <h1>Sign Up</h1>
@@ -58,7 +58,7 @@
                     <button type="button" class="btn btn-success buttonAddUser btn-block">
                         <span id="" class='glyphicon glyphicon-check'></span> Sign Up!
                     </button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <button type="button" class="btn btn-warning btn-block " data-bs-dismiss="modal">
                         <span class='glyphicon glyphicon-remove'></span> Close
                     </button>
                     <div class="card-footer d-inline-block">
